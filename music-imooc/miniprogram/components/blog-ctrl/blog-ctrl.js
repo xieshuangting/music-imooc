@@ -63,6 +63,7 @@ Component({
       content = event.detail.value
     },
     onSend() {
+      console.log(userInfo)
       // 插入数据库
       if (content.trim() == '') {
         wx.showModal({

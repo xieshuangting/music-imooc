@@ -12,6 +12,7 @@ Page({
     selectPhoto: true //添加图片元素是否正在显示
   },
   onLoad: function (options) {
+    console.log(options)
     userInfo = options
   },
   // 输入的时候控制输入的字数
@@ -97,13 +98,14 @@ Page({
     for (let i = 0, len = this.data.images.length; i < len; i++) {
       let p = new Promise((resolve, reject)=>{
         let item = this.data.images[i]
+        console.log(item)
         // 文件扩展名
         let suffix = /\.\w+$/.exec(item)[0]
         wx.cloud.uploadFile({
           cloudPath: 'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix,
           filePath: item,
           success: (res) => {
-            // console.log(res)
+            console.log(res)
             fileIds = fileIds.concat(res.fileID)
             resolve()
           },
